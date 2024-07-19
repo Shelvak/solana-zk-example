@@ -5,7 +5,7 @@ resolution = true
 skip-lint = false
 
 [programs.localnet]
-mini_norma = "FGhjv6bzJNAeXV1Q25Xq22Fi9G1s1fuPbxAZUZe4THXx"
+verifier = "5nSooqgQdbS8Upvk8ojpSrYQgzNMQFKXno2ttWCtRCBa"
 
 [registry]
 url = "https://api.apr.dev"
@@ -15,4 +15,17 @@ cluster = "Localnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]
-test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+test = "yarn test"
+
+[test]
+startup_wait = 5000
+shutdown_wait = 2000
+upgradeable = false
+
+[test.validator]
+bind_address = "0.0.0.0"
+url = "https://api.devnet.solana.com"
+ledger = ".anchor/test-ledger"
+rpc_port = 8899
+slots_per_epoch = "64"
+ticks_per_slot = 2
